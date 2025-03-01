@@ -5,6 +5,7 @@ import { authRoute } from "./auth.js";
 import { loyearRoute } from "./loyearManage.js";
 import { userManageRoute } from "./userManage.js";
 import { mentoreManageRoute } from "./mentoreManage.js";
+import { psychologistManageRoute } from "./psychologistManage.js";
 
 
 adminRoute.get("/", (req, res) => {
@@ -15,4 +16,5 @@ adminRoute.use("/auth", authRoute);
 adminRoute.use("/loyear", loyearRoute)
 adminRoute.use("/userManage", userManageRoute)
 adminRoute.use("/mentoreManage", mentoreManageRoute)
+adminRoute.use("/psychologist", psychologistManageRoute)
 export { adminRoute };
