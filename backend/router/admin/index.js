@@ -17,4 +17,5 @@ adminRoute.use("/loyear", verifyAdminToken, loyearRoute);
 adminRoute.use("/userManage", verifyAdminToken, userManageRoute);
 adminRoute.use("/mentoreManage", verifyAdminToken, mentoreManageRoute);
 adminRoute.use("/psychologist", verifyAdminToken, psychologistManageRoute);
+
 export { adminRoute };
