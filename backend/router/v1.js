@@ -2,7 +2,7 @@ import { Router } from "express";
 const v1 = Router();
 
 import { adminRoute } from "./admin/index.js";
-// import { userRoute } from "./user/index.js";
+import { userRoute } from "./user/index.js";
 
 
 // import { imageRoute } from "./image.js";
@@ -12,7 +12,7 @@ v1.get("/", (req, res) => {
 });
 
 v1.use("/admin", adminRoute);
-// v1.use("/user", userRoute);
+v1.use("/user", userRoute);
 
 
 export default v1;
