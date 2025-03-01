@@ -4,6 +4,7 @@ const adminRoute = Router();
 import { authRoute } from "./auth.js";
 import { loyearRoute } from "./loyearManage.js";
 import { userManageRoute } from "./userManage.js";
+import { mentoreManageRoute } from "./mentoreManage.js";
 
 
 adminRoute.get("/", (req, res) => {
@@ -13,4 +14,5 @@ adminRoute.get("/", (req, res) => {
 adminRoute.use("/auth", authRoute);
 adminRoute.use("/loyear", loyearRoute)
 adminRoute.use("/userManage", userManageRoute)
+adminRoute.use("/mentoreManage", mentoreManageRoute)
 export { adminRoute };
