@@ -20,7 +20,6 @@ async function getAll(qry, page, limit, model) {
         },
       },
     ]);
-
     if (data[0].totalCount.length > 0) {
       res({
         status: 200,
