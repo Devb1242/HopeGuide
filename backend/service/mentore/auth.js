@@ -1,6 +1,6 @@
 import config from "../../config/config.js";
 import { encrypt,save } from "../../helper/index.js";
-import { userModel } from "../../model/index.js";
+import { mentoreModel } from "../../model/index.js";
 import jwt from "jsonwebtoken";
 import bcryptJs from "bcryptjs";
 
@@ -9,12 +9,12 @@ export async function addAuthService(data) {
     try {
       if (data.email || data.mobile) {
         if (data.password) {
-            const userData = await userModel.findOne({email: data.email});
+            const userData = await mentoreModel.findOne({email: data.email});
             if(userData){
                 rej({ status: 400, message: "email Already registerd" });
             }else{
                 data.fullName = data.firstName + "" + data.lastName;
-                const saveData = await save(data, userModel);
+                const saveData = await save(data, mentoreModel);
                 if (saveData) res(saveData); 
                 else rej({ status: 500, message: "Something Went Worng!!" });
             }
@@ -41,22 +41,22 @@ export async function addAuthService(data) {
 export async function loginService(data) {
   return new Promise(async (res, rej) => {
     try {
-      if (data.email) {
-        let loginData = await userModel.findOne({ email: data.email });
+      if (data.email && data.password) {
+        let loginData = await mentoreModel.findOne({ email: data.email });
         if (loginData) {
           const isMatch = bcryptJs.compare(data.password, loginData.password);
           if (isMatch) {
-            let key1 = config.USER_ENCRYPTION_KEY;
-            let encryptUser = await encrypt(loginData._id, key1);
+            let key1 = config.MENTORE_ENCRYPTION_KEY;
+            let encryptMentore = await encrypt(loginData._id, key1);
             let encryptPass = await encrypt(loginData.password, key1);
             let token = jwt.sign(
               {
-                userId: encryptUser,
+                mentoreId: encryptMentore,
                 password: encryptPass,
               },
-              config.USER_ACCESS_TOKEN,
+              config.MENTORE_ACCESS_TOKEN,
               {
-                expiresIn: config.USER_ACCESS_TIME,
+                expiresIn: config.MENTORE_ACCESS_TIME,
               }
             );
             let data = {
@@ -72,7 +72,7 @@ export async function loginService(data) {
         rej({ status: 400, message: "Email Not Registered Register First" });
       }
     }else{
-      rej({status:400, message:"Email not provided.!"})
+        rej({status:404, message:"Email and password required for registration.!"})
     }
     } catch (err) {
       console.log("err ...", err);
