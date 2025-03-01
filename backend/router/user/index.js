@@ -3,6 +3,8 @@ const userRoute = Router();
 import { authRoute } from "./auth.js";
 import { communityRoute} from "./community.js"
 import { verifyUserToken } from "../../middleware/index.js";
+import { loyearRoute } from "./loyearManage.js";
+import { psychologistManageRoute } from "./psychologistManage.js";
 
 userRoute.get("/", (req, res) => {
     res.send("user route is working !!");
@@ -10,6 +12,8 @@ userRoute.get("/", (req, res) => {
 
 userRoute.use("/auth", authRoute);
 userRoute.use("/community", verifyUserToken,communityRoute)
+userRoute.use("/loyear", loyearRoute)
+userRoute.use("/psychologist", psychologistManageRoute)
 
 
 export { userRoute }
