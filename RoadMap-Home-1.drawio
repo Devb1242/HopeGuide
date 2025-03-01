@@ -14,7 +14,7 @@
           <mxGeometry x="-160" y="140" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="bWFnkCtB5NSEsrCA-qpM-5" value="Contact Us" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="339" y="120" width="80" height="30" as="geometry" />
+          <mxGeometry x="339" y="140" width="80" height="30" as="geometry" />
         </mxCell>
         <mxCell id="bWFnkCtB5NSEsrCA-qpM-8" value="Home Page will contain basic informations about the services we are providing" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-600" y="220" width="120" height="90" as="geometry" />
@@ -23,7 +23,7 @@
           <mxGeometry x="-460" y="220" width="120" height="90" as="geometry" />
         </mxCell>
         <mxCell id="bWFnkCtB5NSEsrCA-qpM-13" value="Financial Aids" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="640" y="120" width="80" height="30" as="geometry" />
+          <mxGeometry x="640" y="140" width="80" height="30" as="geometry" />
         </mxCell>
         <mxCell id="bWFnkCtB5NSEsrCA-qpM-15" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.125;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="bWFnkCtB5NSEsrCA-qpM-1" target="bWFnkCtB5NSEsrCA-qpM-2">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -52,12 +52,12 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="bWFnkCtB5NSEsrCA-qpM-18" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="bWFnkCtB5NSEsrCA-qpM-1" target="bWFnkCtB5NSEsrCA-qpM-5">
+        <mxCell id="bWFnkCtB5NSEsrCA-qpM-18" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" target="bWFnkCtB5NSEsrCA-qpM-5">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="-80" y="70" as="sourcePoint" />
-            <mxPoint x="269" y="120" as="targetPoint" />
+            <mxPoint x="40" y="77.99999999999989" as="sourcePoint" />
+            <mxPoint x="378.99999999999955" y="128.0000000000001" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="379" y="70" />
+              <mxPoint x="379" y="78" />
             </Array>
           </mxGeometry>
         </mxCell>
