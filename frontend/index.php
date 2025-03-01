@@ -45,7 +45,7 @@
       <div class="header_bottom">
         <div class="container-fluid">
           <nav class="navbar navbar-expand-lg custom_nav-container">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.php">
               <img src="images/logo.png" alt="">
             </a>
     
@@ -58,10 +58,10 @@
               <div class="d-flex mr-auto flex-column flex-lg-row align-items-center">
                 <ul class="navbar-nav">
                   <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="financialAid.html">Financial Aid</a>
+                    <a class="nav-link" href="financialAid.php">Financial Aid</a>
                   </li>
     
                   <!-- Legal Aid Dropdown -->
@@ -71,8 +71,8 @@
                       Legal Aid
                     </a>
                     <div class="dropdown-menu" aria-labelledby="legalAidDropdown">
-                      <a class="dropdown-item" href="documentation.html">Documentation</a>
-                      <a class="dropdown-item" href="contactLawyer.html">Contact a Lawyer</a>
+                      <a class="dropdown-item" href="documentation.php">Documentation</a>
+                      <a class="dropdown-item" href="contactLawyer.php">Contact a Lawyer</a>
                     </div>
                   </li>
                   <li class="nav-item dropdown">
@@ -81,25 +81,25 @@
                       Emotional Support
                     </a>
                     <div class="dropdown-menu" aria-labelledby="legalAidDropdown">
-                      <a class="dropdown-item" href="pshychologists.html">Pshychologists</a>
-                      <a class="dropdown-item" href="contactLawyer.html">Mental Health Resources</a>
-                      <a class="dropdown-item" href="contactLawyer.html">Support Groups</a>
+                      <a class="dropdown-item" href="pshychologists.php">Pshychologists</a>
+                      <a class="dropdown-item" href="contactLawyer.php">Mental Health Resources</a>
+                      <a class="dropdown-item" href="contactLawyer.php">Support Groups</a>
                     </div>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="doctor.html"></a>
+                    <a class="nav-link" href="doctor.php"></a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="mentors.html">Mentor</a>
+                    <a class="nav-link" href="mentors.php">Mentor</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Community Forum</a>
+                    <a class="nav-link" href="contact.php">Community Forum</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Setting</a>
+                    <a class="nav-link" href="contact.php">Setting</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="profile.html">Profile</a>
+                    <a class="nav-link" href="profile.php">Profile</a>
                   </li>
                 </ul>
               </div>
@@ -713,22 +713,22 @@
                 Useful link
               </h5>
               <div class="info_links_menu">
-                <a class="active" href="index.html">
+                <a class="active" href="index.php">
                   Home
                 </a>
-                <a href="about.html">
+                <a href="about.php">
                   About
                 </a>
-                <a href="treatment.html">
+                <a href="treatment.php">
                   Treatment
                 </a>
-                <a href="doctor.html">
+                <a href="doctor.php">
                   Doctors
                 </a>
-                <a href="testimonial.html">
+                <a href="testimonial.php">
                   Testimonial
                 </a>
-                <a href="contact.html">
+                <a href="contact.php">
                   Contact us
                 </a>
               </div>

@@ -29,7 +29,7 @@
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -37,31 +37,31 @@
             </a>
             <hr class="sidebar-divider my-0">
             <li class="nav-item">
-                <a class="nav-link" href="index.html"><i class="fas fa-fw fa-tachometer-alt"></i><span>Dashboard</span></a>
+                <a class="nav-link" href="index.php"><i class="fas fa-fw fa-tachometer-alt"></i><span>Dashboard</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="user_management.html"><i class="fas fa-users"></i><span>User Management</span></a>
+                <a class="nav-link" href="user_management.php"><i class="fas fa-users"></i><span>User Management</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="mentor_management.html"><i class="fas fa-user-tie"></i><span>Mentor Management</span></a>
+                <a class="nav-link" href="mentor_management.php"><i class="fas fa-user-tie"></i><span>Mentor Management</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="community_threads.html"><i class="fas fa-comments"></i><span>Community Threads</span></a>
+                <a class="nav-link" href="community_threads.php"><i class="fas fa-comments"></i><span>Community Threads</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="financial_aid.html"><i class="fas fa-hand-holding-usd"></i><span>Financial Aid Management</span></a>
+                <a class="nav-link" href="financial_aid.php"><i class="fas fa-hand-holding-usd"></i><span>Financial Aid Management</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="legal_aid.html"><i class="fas fa-balance-scale"></i><span>Legal Aid Management</span></a>
+                <a class="nav-link" href="legal_aid.php"><i class="fas fa-balance-scale"></i><span>Legal Aid Management</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="psychologist_management.html"><i class="fas fa-user-md"></i><span>Psychologist Management</span></a>
+                <a class="nav-link" href="psychologist_management.php"><i class="fas fa-user-md"></i><span>Psychologist Management</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="appointment_overview.html"><i class="fas fa-calendar-check"></i><span>Appointment Overview</span></a>
+                <a class="nav-link" href="appointment_overview.php"><i class="fas fa-calendar-check"></i><span>Appointment Overview</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="platform_settings.html"><i class="fas fa-cogs"></i><span>Platform Settings</span></a>
+                <a class="nav-link" href="platform_settings.php"><i class="fas fa-cogs"></i><span>Platform Settings</span></a>
             </li>
             <hr class="sidebar-divider">
         </ul>
@@ -520,7 +520,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="login.php">Logout</a>
                 </div>
             </div>
         </div>
