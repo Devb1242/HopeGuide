@@ -1,4 +1,5 @@
-import { mentoreModel } from "../../model/index.js";
+import { save } from "../../helper/commonModelService.js";
+import { mentoreModel, mentoreUserChatIdModel } from "../../model/index.js";
 // import { save, getAll, getById } from "../../helper/index.js";
 
 
@@ -34,3 +35,39 @@ export async function getAllMentoreService(){
   });
 }
 
+export async function addMentoreUserService(data){
+  return new Promise(async (res,rej)=>{
+    try {
+      let mentoreData = await mentoreUserChatIdModel.findOne({mentoreID:data.mentoreID});
+      if(mentoreData){
+        await mentoreUserChatIdModel.update({mentoreID:data.mentoreID}, { $push: { userId: data.userId } })
+        res({status:200, message:"Data Saved"});
+      }else{
+        let mentoreNewData = await save(data,mentoreUserChatIdModel);
+        if(mentoreNewData){
+          console.log("Data Saved")
+          res({status:200, message:"Data Saved"});
+        }else{console.log("Data Not Saved")}
+      }
+    } catch (err) {
+      console.log("pavan error", err)
+      rej({ status: 500, error: err.message });
+    }
+  });
+}
+
+export async function getmentoreUserServiceByID(id){
+  return new Promise(async (res,rej)=>{
+    try {
+      let mentoreUserData = await mentoreUserChatIdModel.findOne({mentoreID:id});
+      if(mentoreUserData){
+        res({status:200, message:"Data Found", data:mentoreUserData});
+      }else{
+        rej({ status: 404, message: "User not found !!"});
+      }
+    } catch (err) {
+      console.log(err)
+      rej({ status: 500, error: err.message });
+    }
+  });
+}
