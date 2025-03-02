@@ -1,0 +1,42 @@
+/* Tabs Section Styles */
+.tabs_section {
+    padding: 40px 0;
+  }
+  
+  .tabs_container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .tab_button {
+    padding: 10px 20px;
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .tab_button.active {
+    background-color: #1abc9c;
+    color: #ffffff;
+  }
+  
+  .tab_button:hover {
+    background-color: #16a085;
+    color: #ffffff;
+  }
+  
+  .tab_content {
+    display: none;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tab_content.active {
+    display: block;
+  }
