@@ -5,13 +5,19 @@ import config from "./config/config.js";
 import mongoose from 'mongoose';
 import v1 from "./router/v1.js"
 import cookieParser from 'cookie-parser';
+import { chat } from './chat.js';
 
-
-
+chat()
 // Create an instance of express
 const app = express();
 
-// Configuration for cors
+const corsOptions = {
+    origin: "*", // Allow requests from this origin
+    credentials: true
+};
+
+
+// // Configuration for cors
 // var corsOptions = {
 //     origin: "http://localhost:5430",
 //     credentials: true
@@ -45,11 +51,23 @@ mongoose.set('debug', true);
 mongoose.connect(MONGODB_URL,{ useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('Connected to MongoDB');
-        app.listen(config.PORT, () => {
+        // app.listen(config.PORT, () => {
+        //     console.log(`Server is running on port ${config.PORT}`);
+
+        // });
+        // Create HTTP server
+        const server = app.listen(config.PORT, () => {
             console.log(`Server is running on port ${config.PORT}`);
         });
+
+        // Initialize Socket.IO
+        chat(server);
     })
     .catch((err) => {
         console.error('Failed to connect to MongoDB', err);
     });
+
+
+
+
 

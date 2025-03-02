@@ -1,0 +1,61 @@
+.mentor-card {
+    width: 100%; /* Ensures responsive width */
+    max-width: 280px; /* Optional: Set a max-width */
+    height: 420px; /* Fixed height */
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.mentor-card:hover {
+    transform: scale(1.05);
+}
+
+.mentor-card img {
+    height: 180px; /* Ensures all images are same height */
+    width: 100%;
+    object-fit: cover; /* Prevents stretching */
+}
+
+.mentor-card .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Ensures all text content is aligned properly */
+.mentor-card .card-title {
+    min-height: 50px; /* Consistent height for titles */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.mentor-card .ratings {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.mentor-card .address,
+.mentor-card .phone {
+    font-size: 14px;
+    line-height: 1.4;
+    min-height: 40px; /* Ensures consistent spacing */
+}
+.filter-section {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.filter-section select {
+    margin: 5px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
