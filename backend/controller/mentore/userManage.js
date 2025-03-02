@@ -1,11 +1,12 @@
 import { response } from "../../middleware/index.js";
-import { getMentoreServiceByID, getAllMentoreService } from "../../service/user/index.js";
+import { getUserServiceByID, getAllUserService } from "../../service/mentore/index.js";
 
 
-export async function getMentoreByIDController(req, res){
+
+export async function getUserByIDController(req, res){
     // console.log("Inside Controller ");
     try {
-       const resp =  await getMentoreServiceByID(req.params.id);
+       const resp =  await getUserServiceByID(req.params.id);
        console.log(resp);
        if (resp) return response("SUCCESS..!!", resp.data, 200, res);
         else return response("Something went wrong!!", {}, 500, res);
@@ -14,10 +15,10 @@ export async function getMentoreByIDController(req, res){
     }
 }
 
-export async function getAllMentoreController(req, res){
+export async function getAllUserController(req, res){
     // console.log("Inside Controller ");
     try {
-       const resp =  await getAllMentoreService();
+       const resp =  await getAllUserService();
        console.log(resp);
        if (resp) return response("SUCCESS..!!", resp.data, 200, res);
         else return response("Something went wrong!!", {}, 500, res);
@@ -26,4 +27,3 @@ export async function getAllMentoreController(req, res){
         response(err.message, err?.err, err.status, res);
     }
 }
-
