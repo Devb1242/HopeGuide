@@ -162,194 +162,155 @@
                 <form id="newThreadForm">
                     <div class="mb-3">
                         <label for="threadTitle" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="threadTitle" required>
+                        <input type="text" class="form-control" id="threadTitle" name = "threadTitle" required>
                     </div>
                     <div class="mb-3">
                         <label for="threadDescription" class="form-label">Description</label>
-                        <textarea class="form-control" id="threadDescription" rows="3" required></textarea>
+                        <textarea class="form-control" id="threadDescription" name = "threadDescription" rows="3" required></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="createNewThread()">Create Thread</button>
+                <button type="button" class="btn btn-primary" id="submitThreadBtn" onclick="createNewThread()">
+                    <span class="submit-text">Create Thread</span>
+                    <span class="spinner-border spinner-border-sm spinner" style="display: none;"></span>
+                </button>
             </div>
         </div>
     </div>
 </div>
+<!-- info section -->
+  <!-- Include Footer -->
+  <?php include 'footer.php'; ?>
+
 
 <script>
-    // Function to create a new thread
-    function createNewThread() {
+    async function createNewThread() {
         const title = document.getElementById('threadTitle').value.trim();
         const description = document.getElementById('threadDescription').value.trim();
+        const submitBtn = document.getElementById('submitThreadBtn');
+        const spinner = submitBtn.querySelector('.spinner');
+        const submitText = submitBtn.querySelector('.submit-text');
 
         if (!title || !description) {
-            alert("Please fill out both the title and description.");
+            alert('Please fill in all required fields');
             return;
         }
 
-        // Create a new thread element
-        const threadHtml = `
-            <div class="thread">
-                <div class="thread-header">
-                    <div>
-                        <span class="thread-title">${title}</span>
-                        <span class="thread-username">by You</span>
-                    </div>
-                    <span class="thread-date">Posted on: ${new Date().toLocaleDateString()}</span>
-                </div>
-                <div class="thread-description">${description}</div>
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                    <button class="btn btn-primary btn-sm" onclick="toggleReply('replyNew')">Reply</button>
-                    <button class="btn btn-outline-secondary btn-sm" onclick="toggleReplies('repliesNew')">Show Replies</button>
-                </div>
-                <div id="replyNew" class="reply-section">
-                    <textarea rows="3" placeholder="Write your reply..." maxlength="200" oninput="updateCharCount(this, 'charCountNew')"></textarea>
-                    <div class="char-count" id="charCountNew">200 characters remaining</div>
-                    <button class="btn btn-success btn-sm" onclick="submitReply('replyNew', 'repliesNew')">Submit Reply</button>
-                    <div class="spinner-border text-primary spinner" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                </div>
-                <div id="repliesNew" class="replies">
-                    <!-- Replies will be dynamically added here -->
-                </div>
-            </div>
-        `;
+        try {
+            // Show loading state
+            submitText.textContent = 'Creating...';
+            spinner.style.display = 'inline-block';
+            submitBtn.disabled = true;
 
-        // Add the new thread to the threads container
-        const threadsContainer = document.getElementById('threads-container');
-        threadsContainer.insertAdjacentHTML('afterbegin', threadHtml);
+            // Send POST request to your API
+            const response = await fetch('http://localhost:5430/v1/user/community/addThread', {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJVMkZzZEdWa1gxL2Qrc1paN20zaUloajhFNnloV2ZSOUlydzd2UGJCbmJTUlVEc1R5dGIySmRqSEJOb3N2S2dsIiwicGFzc3dvcmQiOiJVMkZzZEdWa1gxOWFrenNzOEJIc2lleWx3d0dMNEFUcWdMZkluK2ZGb0hidUtzaHVMYWpVU2pLZVBTS2pjMVFqcHZFMG81eG5rMm0xVmR1cTlDdHdnbWVQZ0hBRXhDSWsrRmZrRGNrd3F3Yz0iLCJpYXQiOjE3NDA4OTM2OTcsImV4cCI6MTc0MDk4MDA5N30.ecQyENiP-71NwEQdFQjdOh468SHwLE5SmpX69zLOlcY',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    title,
+                    description,
+                    // Add any additional required fields from your API
+                })
+            });
 
-        // Close the modal
-        const modal = bootstrap.Modal.getInstance(document.getElementById('newThreadModal'));
-        modal.hide();
+            if (!response.ok) throw new Error('Failed to create thread');
 
-        // Clear the form
-        document.getElementById('newThreadForm').reset();
-    }
+            // Close modal and clear form
+            const modal = bootstrap.Modal.getInstance(document.getElementById('newThreadModal'));
+            modal.hide();
+            document.getElementById('newThreadForm').reset();
 
-    // Toggle reply section
-    function toggleReply(replyId) {
-        const replySection = document.getElementById(replyId);
-        replySection.style.display = replySection.style.display === "none" ? "block" : "none";
-    }
+            // Show success message
+            alert('Thread created successfully!');
+            
+            // Refresh threads or prepend new thread to list
+            // You can either call your existing fetchThreads() function or:
+            const newThread = await response.json();
+            window.location.href = "./communityForum.php"
 
-    // Toggle replies section
-    function toggleReplies(repliesId) {
-        const repliesSection = document.getElementById(repliesId);
-        repliesSection.style.display = repliesSection.style.display === "none" ? "block" : "none";
-    }
-
-    // Update character count
-    function updateCharCount(textarea, charCountId) {
-        const charCount = document.getElementById(charCountId);
-        const remaining = 200 - textarea.value.length;
-        charCount.textContent = `${remaining} characters remaining`;
-    }
-
-    // Submit reply
-    function submitReply(replyId, repliesId) {
-        const replyTextarea = document.querySelector(`#${replyId} textarea`);
-        const replyText = replyTextarea.value.trim();
-        if (!replyText) {
-            alert("Please write a reply before submitting.");
-            return;
+        } catch (error) {
+            console.error('Error creating thread:', error);
+            alert('Failed to create thread. Please try again.');
+        } finally {
+            // Reset button state
+            submitText.textContent = 'Create Thread';
+            spinner.style.display = 'none';
+            submitBtn.disabled = false;
         }
-
-        const spinner = document.querySelector(`#${replyId} .spinner`);
-        spinner.style.display = "inline-block";
-
-        // Simulate a delay for submission
-        setTimeout(() => {
-            spinner.style.display = "none";
-            replyTextarea.value = ""; // Clear the textarea
-            updateCharCount(replyTextarea, `charCount${replyId.slice(-1)}`);
-
-            // Add the reply to the replies section
-            const repliesSection = document.getElementById(repliesId);
-            const replyHtml = `
-                <div class="reply">
-                    <div class="reply-username">You</div>
-                    <div class="reply-date">Just now</div>
-                    <div class="reply-text">${replyText}</div>
-                </div>
-            `;
-            repliesSection.insertAdjacentHTML("beforeend", replyHtml);
-            repliesSection.style.display = "block"; // Show replies if hidden
-        }, 1000);
     }
+
 </script>
 
-<!-- Bootstrap JS and dependencies -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Fetch threads from API
-    fetch('http://localhost:5430/v1/user/community/getAllThread?page=1&limit=10', {
-        method: 'GET',
-        headers: {
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJVMkZzZEdWa1gxL2Qrc1paN20zaUloajhFNnloV2ZSOUlydzd2UGJCbmJTUlVEc1R5dGIySmRqSEJOb3N2S2dsIiwicGFzc3dvcmQiOiJVMkZzZEdWa1gxOWFrenNzOEJIc2lleWx3d0dMNEFUcWdMZkluK2ZGb0hidUtzaHVMYWpVU2pLZVBTS2pjMVFqcHZFMG81eG5rMm0xVmR1cTlDdHdnbWVQZ0hBRXhDSWsrRmZrRGNrd3F3Yz0iLCJpYXQiOjE3NDA4OTM2OTcsImV4cCI6MTc0MDk4MDA5N30.ecQyENiP-71NwEQdFQjdOh468SHwLE5SmpX69zLOlcY',
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        const threadsContainer = document.getElementById('threads-container');
-        threadsContainer.innerHTML = ''; // Clear existing content
+    document.addEventListener('DOMContentLoaded', function() {
+        // Fetch threads from API
+        fetch('http://localhost:5430/v1/user/community/getAllThread?page=1&limit=10', {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJVMkZzZEdWa1gxL2Qrc1paN20zaUloajhFNnloV2ZSOUlydzd2UGJCbmJTUlVEc1R5dGIySmRqSEJOb3N2S2dsIiwicGFzc3dvcmQiOiJVMkZzZEdWa1gxOWFrenNzOEJIc2lleWx3d0dMNEFUcWdMZkluK2ZGb0hidUtzaHVMYWpVU2pLZVBTS2pjMVFqcHZFMG81eG5rMm0xVmR1cTlDdHdnbWVQZ0hBRXhDSWsrRmZrRGNrd3F3Yz0iLCJpYXQiOjE3NDA4OTM2OTcsImV4cCI6MTc0MDk4MDA5N30.ecQyENiP-71NwEQdFQjdOh468SHwLE5SmpX69zLOlcY',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            const threadsContainer = document.getElementById('threads-container');
+            threadsContainer.innerHTML = ''; // Clear existing content
 
-        // Assuming data.data contains array of threads
-        data.data.result.forEach((thread, index) => {
-            const threadHTML = `
-                <div class="thread">
-                    <div class="thread-header">
-                        <div>
-                            <span class="thread-title">${thread.title || 'No Title'}</span>
-                            <span class="thread-username">by ${thread.username || 'Anonymous'}</span>
-                        </div>
-                    </div>
-                    <div class="thread-description">
-                        ${thread.description || 'No description available'}
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mt-3">
-                        <button class="btn btn-primary btn-sm" onclick="toggleReply('reply${index}')">Reply</button>
-                        <button class="btn btn-outline-secondary btn-sm" onclick="toggleReplies('replies${index}')">Show Replies</button>
-                    </div>
-                    <div id="reply${index}" class="reply-section" style="display: none;">
-                        <textarea rows="3" placeholder="Write your reply..." 
-                                  maxlength="200" 
-                                  oninput="updateCharCount(this, 'charCount${index}')"></textarea>
-                        <div class="char-count" id="charCount${index}">200 characters remaining</div>
-                        <button class="btn btn-success btn-sm" 
-                                onclick="submitReply('reply${index}', 'replies${index}')">
-                            Submit Reply
-                        </button>
-                        <div class="spinner-border text-primary spinner" role="status" style="display: none;">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                    </div>
-                    <div id="replies${index}" class="replies" style="display: none;">
-                        ${(thread.replies || []).map(reply => `
-                            <div class="reply">
-                                <div class="reply-user">${reply.username}</div>
-                                <div class="reply-content">${reply.content}</div>
+            // Assuming data.data contains array of threads
+            data.data.result.forEach((thread, index) => {
+                const threadHTML = `
+                    <div class="thread">
+                        <div class="thread-header">
+                            <div>
+                                <span class="thread-title">${thread.title || 'No Title'}</span>
+                                <span class="thread-username">by ${thread.username || 'Anonymous'}</span>
                             </div>
-                        `).join('')}
+                        </div>
+                        <div class="thread-description">
+                            ${thread.description || 'No description available'}
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <button class="btn btn-primary btn-sm" onclick="toggleReply('reply${index}')">Reply</button>
+                            <button class="btn btn-outline-secondary btn-sm" onclick="toggleReplies('replies${index}')">Show Replies</button>
+                        </div>
+                        <div id="reply${index}" class="reply-section" style="display: none;">
+                            <textarea rows="3" placeholder="Write your reply..." 
+                                    maxlength="200" 
+                                    oninput="updateCharCount(this, 'charCount${index}')"></textarea>
+                            <div class="char-count" id="charCount${index}">200 characters remaining</div>
+                            <button class="btn btn-success btn-sm" 
+                                    onclick="submitReply()">
+                                Submit Reply
+                            </button>
+                            <div class="spinner-border text-primary spinner" role="status" style="display: none;">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                        <div id="replies${index}" class="replies" style="display: none;">
+                            ${(thread.replies || []).map(reply => `
+                                <div class="reply">
+                                    <div class="reply-user">${reply.username}</div>
+                                    <div class="reply-content">${reply.content}</div>
+                                </div>
+                            `).join('')}
+                        </div>
                     </div>
-                </div>
-            `;
-            threadsContainer.insertAdjacentHTML('beforeend', threadHTML);
+                `;
+                threadsContainer.insertAdjacentHTML('beforeend', threadHTML);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching threads:', error);
+            threadsContainer.innerHTML = '<p class="text-danger">Error loading threads. Please try again later.</p>';
         });
-    })
-    .catch(error => {
-        console.error('Error fetching threads:', error);
-        threadsContainer.innerHTML = '<p class="text-danger">Error loading threads. Please try again later.</p>';
     });
 
-    // Existing forum interaction functions
+        // Existing forum interaction functions
     function toggleReply(replyId) {
         const replySection = document.getElementById(replyId);
         replySection.style.display = replySection.style.display === 'none' ? 'block' : 'none';
@@ -365,19 +326,33 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById(charCountId).textContent = `${remaining} characters remaining`;
     }
 
-    async function submitReply(replyId, repliesId) {
-        const textarea = document.querySelector(`#${replyId} textarea`);
-        const content = textarea.value.trim();
-        
-        if (!content) return;
+    async function submitReply(replyId, repliesId, threadId) {
+        console.log("Pavan")
+    const textarea = document.querySelector(`#${replyId} textarea`);
+    const content = textarea.value.trim();
+    
+    if (!content) return;
 
-        try {
-            const spinner = document.querySelector(`#${replyId} .spinner`);
-            spinner.style.display = 'inline-block';
+    try {
+        const spinner = document.querySelector(`#${replyId} .spinner`);
+        spinner.style.display = 'inline-block';
 
-            // Simulate API call - replace with actual API endpoint
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            
+        // API Request to submit reply
+        const response = await fetch('http://localhost:5430/v1/user/community/addThreadReplay/67c4060901422e343d64b308', {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJVMkZzZEdWa1gxL2Qrc1paN20zaUloajhFNnloV2ZSOUlydzd2UGJCbmJTUlVEc1R5dGIySmRqSEJOb3N2S2dsIiwicGFzc3dvcmQiOiJVMkZzZEdWa1gxOWFrenNzOEJIc2lleWx3d0dMNEFUcWdMZkluK2ZGb0hidUtzaHVMYWpVU2pLZVBTS2pjMVFqcHZFMG81eG5rMm0xVmR1cTlDdHdnbWVQZ0hBRXhDSWsrRmZrRGNrd3F3Yz0iLCJpYXQiOjE3NDA4OTM2OTcsImV4cCI6MTc0MDk4MDA5N30.ecQyENiP-71NwEQdFQjdOh468SHwLE5SmpX69zLOlcY', // Replace with valid token
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                threadId: threadId, // ID of the thread being replied to
+                content: content
+            })
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
             // Add new reply to UI
             const repliesContainer = document.getElementById(repliesId);
             repliesContainer.insertAdjacentHTML('afterbegin', `
@@ -386,18 +361,24 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="reply-content">${content}</div>
                 </div>
             `);
-            
+
             textarea.value = '';
             updateCharCount(textarea, `charCount${replyId.replace('reply', '')}`);
-        } catch (error) {
-            console.error('Error submitting reply:', error);
-            alert('Failed to submit reply. Please try again.');
-        } finally {
-            document.querySelector(`#${replyId} .spinner`).style.display = 'none';
+        } else {
+            alert(`Error: ${result.message || 'Failed to submit reply'}`);
         }
+    } catch (error) {
+        console.error('Error submitting reply:', error);
+        alert('Failed to submit reply. Please try again.');
+    } finally {
+        document.querySelector(`#${replyId} .spinner`).style.display = 'none';
     }
-});
+};
 </script>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 
 </body>
 </html>

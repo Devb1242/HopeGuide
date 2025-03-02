@@ -3,8 +3,8 @@
   <div class="header_bottom">
     <div class="container-fluid">
       <nav class="navbar navbar-expand-lg custom_nav-container">
-        <a class="navbar-brand" href="index.php">
-          <img src="images/logo.png" alt="">
+        <a class="" href="index.php">
+          <img src="images/samantah Johnson - wellness coaching - menthal help- (1).png" alt="" style="width: 100px; height: auto; max-height: 100px;">
         </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -18,9 +18,9 @@
               <li class="nav-item active">
                 <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="financialAid.php">Financial Aid</a>
-              </li>
+              </li> -->
 
               <!-- Legal Aid Dropdown -->
               <li class="nav-item dropdown">
@@ -33,15 +33,8 @@
                   <a class="dropdown-item" href="contactLawyer.php">Contact a Lawyer</a>
                 </div>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="legalAidDropdown" role="button" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
-                  Emotional Support
-                </a>
-                <div class="dropdown-menu" aria-labelledby="legalAidDropdown">
-                  <a class="dropdown-item" href="pshychologists.php">Psychologist</a>
-                  <!-- <a class="dropdown-item" href="contactLawyer.php">Mental Health Resources</a>-->
-                </div>
+              <li class="nav-item">
+                <a class="nav-link" href="pshychologists.php">Emotional Support</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="mentors.php">Mentor</a>

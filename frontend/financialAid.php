@@ -49,7 +49,7 @@
 
   <!-- about section -->
 
-  <div class="container mt-5">
+  <div class="container mt-4">
     <!-- <h1 class="text-center mb-4 display-4 font-weight-bold text-primary">Victim Compensation Programs</h1> -->
 
   
@@ -65,7 +65,7 @@
       <div class="row">
         <div class="col-md-6 ">
           <div class="img-box">
-            <img src="images/about-img.jpg" alt="">
+            <img src="images/CICA.jpeg" alt="">
           </div>
         </div>
         <div class="col-md-6">
@@ -120,7 +120,7 @@
       </div>
       <div class="col-md-6">
         <div class="img-box">
-          <img src="images/about-img.jpg" alt="">
+          <img src="images/Financial_Support.jpeg" alt="">
         </div>
       </div>
     </div>
@@ -133,7 +133,7 @@
       <div class="row">
         <div class="col-md-6 ">
           <div class="img-box">
-            <img src="images/about-img.jpg" alt="">
+            <img src="images/Victim_Service.jpeg" alt="">
           </div>
         </div>
         <div class="col-md-6">
@@ -184,7 +184,7 @@
       </div>
       <div class="col-md-6">
         <div class="img-box">
-          <img src="images/about-img.jpg" alt="">
+          <img src="images/restitution.jpg" alt="">
         </div>
       </div>
     </div>
@@ -196,7 +196,7 @@
       <div class="row">
         <div class="col-md-6 ">
           <div class="img-box">
-            <img src="images/about-img.jpg" alt="">
+            <img src="images/WhatsApp Image 2025-03-02 at 07.22.41.jpeg" alt="">
           </div>
         </div>
         <div class="col-md-6">
@@ -238,7 +238,7 @@
       </div>
       <div class="col-md-6">
         <div class="img-box">
-          <img src="images/about-img.jpg" alt="">
+          <img src="images/Victims_of_Crime.jpeg" alt="">
         </div>
       </div>
     </div>
@@ -249,7 +249,7 @@
       <div class="row">
         <div class="col-md-6 ">
           <div class="img-box">
-            <img src="images/about-img.jpg" alt="">
+            <img src="images/madd.jpeg" alt="">
           </div>
         </div>
         <div class="col-md-6">

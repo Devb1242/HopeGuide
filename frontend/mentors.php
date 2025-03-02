@@ -21,7 +21,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Mico</title>
+  <title>HopeGuide</title>
 
 
   <!-- bootstrap core css -->

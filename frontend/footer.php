@@ -6,7 +6,7 @@
       <!-- Footer Logo and Description -->
       <div class="footer_logo">
         <a href="index.php">
-          <img src="images/logo.png" alt="HopeGuide Logo">
+          <img src="images/samantah Johnson - wellness coaching - menthal help-.png" alt="HopeGuide Logo" style="width: 180px;">
         </a>
         <p>HopeGuide is Empowering victims of violent crimes with comprehensive support and resources, guiding them through their journey to recovery and justice.</p>
       </div>
@@ -54,19 +54,6 @@
           <button type="submit">Subscribe</button>
         </form>
       </div>
-    </div>
-
-    <!-- Social Media Links -->
-    <div class="footer_social">
-      <a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-      <a href="#" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-      <a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
-      <a href="#" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-    </div>
-
-    <!-- Copyright -->
-    <div class="footer_copyright">
-      <p>&copy; <span id="displayYear"></span> All Rights Reserved By HopeGuide Team</p>
     </div>
   </div>
 </footer>
