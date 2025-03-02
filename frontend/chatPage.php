@@ -11,6 +11,7 @@ if (!sessionStorage.getItem('userId')) {
 <?php
 if(isset($_GET['mentoreId'])){
   $mentoreId = $_GET['mentoreId'];
+
   $mentoreName = $_GET['mentoreName'];
 }
 ?>
@@ -427,11 +428,11 @@ if(isset($_GET['mentoreId'])){
 
     // Listen for incoming messages
     socket.on('private message', (data) => {
-      if(data.from == username){
-        addMessageToChat(data.message, data.from, true);
-      }else{
+      console.log("Pavan",data)
+      if(data.to === username && data.from === recipient){
         addMessageToChat(data.message, data.from, false);
-
+      }else if(data.from === username && data.to === recipient){
+        addMessageToChat(data.message, data.from, true);
       }
     });
     </script>

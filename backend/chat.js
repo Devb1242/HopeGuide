@@ -19,12 +19,12 @@ export function chat(server) {
 
     // Handle socket connections
     io.on("connection", (socket) => {
-        console.log(`A user connected: ${socket.id}`);
+        // console.log(`A user connected: ${socket.id}`);
 
         // Listen for a new user joining
         socket.on("user joined", async (userId) => {
             chatusers[userId] = socket.id; // Store the userId and socket ID
-            console.log(`${userId} joined the chat`);
+            // console.log(`${userId} joined the chat`);
 
             // Check if there are pending messages for this user
             if (pendingMessages[userId]) {
@@ -44,6 +44,7 @@ export function chat(server) {
             messages.forEach((message) => {
                 socket.emit("private message", {
                     from: message.from,
+                    to: message.to,
                     message: message.message,
                     timestamp: message.timestamp,
                 });
@@ -72,14 +73,14 @@ export function chat(server) {
 
             if (toSocketId) {
                 // Send the message to the recipient
-                io.to(toSocketId).emit("private message", { from, message });
+                io.to(toSocketId).emit("private message", { from, to, message });
                 console.log(`Private message from ${from} to ${to}: ${message}`);
             } else {
                 // Store the message if the recipient is not available
                 if (!pendingMessages[to]) {
                     pendingMessages[to] = []; // Initialize the pending messages array
                 }
-                pendingMessages[to].push({ from, message });
+                pendingMessages[to].push({ from,to, message });
                 console.log(`Message from ${from} to ${to} is pending.`);
             }
         });
