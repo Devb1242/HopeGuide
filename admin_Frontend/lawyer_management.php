@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dev Patel - Mentor Management</title>
+    <title>Dev Patel - Lawyer Management</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -50,9 +50,9 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Mentor Management</h1>
-                        <a href="add_new_mentor.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class=""></i> Add New Management</a>
+                        <h1 class="h3 mb-0 text-gray-800">Lawyer Management</h1>
+                        <a href="add_new_lawyer.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class=""></i> Add New Lawyer</a>
                     </div>
                     
                     <!-- DataTales Example -->
