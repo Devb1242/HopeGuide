@@ -1,3 +1,12 @@
+<script>
+  $token = sessionStorage.getItem('token');
+  // console.log($token)
+  if (!sessionStorage.getItem('userId')) {
+    window.location.href = './login.php';
+  } else {
+  // console.log('token exists:',sessionStorage.getItem('userId'));
+}
+</script>
 <!DOCTYPE html>
 <html>
 
@@ -80,43 +89,13 @@
             <h2>Your <span class="text-primary">Mentors</span></h2>
         </div>
 
-        <div class="row g-4">
+        <div class="row g-4" id="mentorCards">
             <!-- Mentor 1 -->
             <div class="col-md-4">
                 <div class="card mentor-card">
                     <img src="images/team1.jpg" class="card-img-top" alt="Mentor 1">
                     <div class="card-body">
                         <h5 class="card-title">Hennry</h5>
-                        <p class="card-text">MBBS</p>
-                        <div class="d-flex justify-content-between">
-                            <button class="btn btn-primary btn-custom"><a href="bookAppoinment.php" style="color: white;">Book</a></button>
-                            <button class="btn btn-success btn-custom">Chat</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mentor 2 -->
-            <div class="col-md-4">
-                <div class="card mentor-card">
-                    <img src="images/team2.jpg" class="card-img-top" alt="Mentor 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Jenni</h5>
-                        <p class="card-text">MBBS</p>
-                        <div class="d-flex justify-content-between">
-                            <button class="btn btn-primary btn-custom"><a href="bookAppoinment.php" style="color: white;">Book</a></button>
-                            <button class="btn btn-success btn-custom">Chat</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mentor 3 -->
-            <div class="col-md-4">
-                <div class="card mentor-card">
-                    <img src="images/team3.jpg" class="card-img-top" alt="Mentor 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Morco</h5>
                         <p class="card-text">MBBS</p>
                         <div class="d-flex justify-content-between">
                             <button class="btn btn-primary btn-custom"><a href="bookAppoinment.php" style="color: white;">Book</a></button>
@@ -134,6 +113,72 @@
   <!-- info section -->
 <!-- Include Footer -->
 <?php include 'footer.php'; ?>
+
+<script>
+    // Enhanced filtering logic
+    let allMentors = [];
+
+    fetch('http://localhost:5430/v1/user/mentore/getAllMentore', {
+      headers: {
+        'Authorization': 'Bearer ' + $token,
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+        allMentors = data.data;
+        renderCards(allMentors);
+        
+        // Add event listeners
+        //   document.getElementById('searchInput').addEventListener('input', filterLawyers);
+        //   document.getElementById('cityFilter').addEventListener('change', filterLawyers);
+    })
+    .catch(error => console.error('Error:', error));
+    
+    function renderCards(mentores) {
+        const container = document.getElementById('mentorCards');
+        container.innerHTML = '';
+        
+        mentores.forEach(mentore => {
+            console.log(mentore)
+        const card = document.createElement('div');
+        card.className = 'col-md-4';
+        card.innerHTML = `
+
+          <div class="card mentor-card">
+                    <img src="images/team1.jpg" class="card-img-top" alt="${mentore.fullName}">
+                    <div class="card-body">
+                        <h5 class="card-title">${mentore.fullName}</h5>
+                        <p class="card-text">${mentore.email}</p>
+                        <p class="card-text">${mentore.mobile}</p>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-primary btn-custom"><a href="bookAppoinment.php" style="color: white;">Book</a></button>
+                            <button class="btn btn-success btn-custom">Chat</button>
+                        </div>
+                    </div>
+                </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // function filtermentores() {
+    //   console.log("Pavan")
+    //   const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+    //   const selectedCity = document.getElementById('cityFilter').value.toLowerCase();
+
+    //   const filtered = allLawyers.filter(lawyer => {
+    //     const matchesSearch = lawyer.name.toLowerCase().includes(searchQuery);
+    //     const city = lawyer.city.split(',')[1]?.trim().toLowerCase();
+    //     console.log("Pavan",city)
+    //     const matchesCity = !selectedCity || city === selectedCity;
+        
+    //     return matchesSearch && matchesCity;
+    //   });
+
+    //   renderCards(filtered);
+    // }
+  </script>
 
 </body>
 
