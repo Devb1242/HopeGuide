@@ -2,6 +2,8 @@ import { Router } from "express";
 import {
   getMentoreByIDController,
   getAllMentoreController,
+  getmentoreUserByIDController,
+  addMentoreUserController
 } from "../../controller/user/index.js";
 const mentoreManageRoute = Router();
 
@@ -12,6 +14,7 @@ mentoreManageRoute.get("/", (req, res) => {
 
 mentoreManageRoute.get("/getMentoreById/:id", getMentoreByIDController);
 mentoreManageRoute.get("/getAllMentore", getAllMentoreController);
-
+mentoreManageRoute.post("/addMentoreUser",addMentoreUserController)
+mentoreManageRoute.get("/getmentoreUserByID/:id",getmentoreUserByIDController)
 
 export { mentoreManageRoute };

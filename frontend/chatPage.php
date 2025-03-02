@@ -336,7 +336,7 @@ if(isset($_GET['mentoreId'])){
             <!-- <img src="avatar-placeholder.jpg" alt="Mentor" class="mentor-avatar"> -->
             <div>
                 <h5 class="mb-1"><?php echo $mentoreName?> </h5>
-                
+
             </div>
         </div>
 
@@ -409,7 +409,49 @@ if(isset($_GET['mentoreId'])){
                 to: recipient,
                 message
             });
+            fetch('http://localhost:5430/v1/user/mentore/getmentoreUserByID/' + recipient, {
+                    headers: {
+                        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message == "User not found !!") {
 
+                        // Define the URL of the API endpoint
+                        const url = 'http://localhost:5430/v1/user/mentore/addMentoreUser/';
+
+                        // Define the data you want to send in the request body
+                        const data = {
+                          mentoreID: recipient,
+                          userID: username
+                        };
+
+                        // Make the POST request using fetch
+                        fetch(url, {
+                                method: 'POST', // Specify the request method
+                                headers: {
+                                    'Content-Type': 'application/json' // Set the content type to JSON
+                                },
+                                body: JSON.stringify(data) // Convert the data to a JSON string
+                            })
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Network response was not ok');
+                                }
+                                 console.log("data stored")
+                            })
+                            .then(responseData => {
+                                console.log('Success:', responseData); // Handle the response data
+                            })
+                            .catch(error => {
+                                console.error('Error:', error); // Handle any errors
+                            });
+                    }
+
+                })
+                .catch(error => console.log('Error:', error));
             // Clear input
             messageInput.value = '';
         }
@@ -428,12 +470,12 @@ if(isset($_GET['mentoreId'])){
 
     // Listen for incoming messages
     socket.on('private message', (data) => {
-      console.log("Pavan",data)
-      if(data.to === username && data.from === recipient){
-        addMessageToChat(data.message, data.from, false);
-      }else if(data.from === username && data.to === recipient){
-        addMessageToChat(data.message, data.from, true);
-      }
+        console.log("Pavan", data)
+        if (data.to === username && data.from === recipient) {
+            addMessageToChat(data.message, data.from, false);
+        } else if (data.from === username && data.to === recipient) {
+            addMessageToChat(data.message, data.from, true);
+        }
     });
     </script>
 
