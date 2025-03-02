@@ -29,7 +29,7 @@
                   Legal Aid
                 </a>
                 <div class="dropdown-menu" aria-labelledby="legalAidDropdown">
-                  <a class="dropdown-item" href="documentation.php">Documentation</a>
+                  <a class="dropdown-item" href="documentation.php">Step By Step Guide</a>
                   <a class="dropdown-item" href="contactLawyer.php">Contact a Lawyer</a>
                 </div>
               </li>
