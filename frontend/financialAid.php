@@ -35,112 +35,6 @@
   <link href="css/responsive.css" rel="stylesheet" />
 
   <!-- Custom CSS for Beautification -->
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
-    }
-
-    .hero_area {
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-      color: #fff;
-      padding: 20px 0;
-    }
-
-    .navbar-brand img {
-      height: 50px;
-    }
-
-    .navbar-nav .nav-item .nav-link {
-      color: #fff !important;
-      font-weight: 500;
-    }
-
-    .navbar-nav .nav-item .nav-link:hover {
-      color: #ffdd57 !important;
-    }
-
-    .card {
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
-    }
-
-    .card-header {
-      background-color: #343a40;
-      color: #fff;
-      border-radius: 10px 10px 0 0;
-    }
-
-    .card-body {
-      padding: 20px;
-    }
-
-    .card-body h3 {
-      color: #2575fc;
-      margin-top: 20px;
-    }
-
-    .card-body h4 {
-      color: #6a11cb;
-      margin-top: 15px;
-    }
-
-    .card-body ul {
-      list-style-type: disc;
-      padding-left: 20px;
-    }
-
-    .card-body ul li {
-      margin-bottom: 10px;
-    }
-
-    .card-body a {
-      color: #2575fc;
-      text-decoration: none;
-    }
-
-    .card-body a:hover {
-      text-decoration: underline;
-    }
-
-    .info_section {
-      background-color: #343a40;
-      color: #fff;
-      padding: 40px 0;
-    }
-
-    .info_section h5 {
-      color: #ffdd57;
-    }
-
-    .info_section a {
-      color: #fff;
-      text-decoration: none;
-    }
-
-    .info_section a:hover {
-      color: #ffdd57;
-    }
-
-    .footer_section {
-      background-color: #2575fc;
-      color: #fff;
-      padding: 20px 0;
-      text-align: center;
-    }
-
-    .footer_section a {
-      color: #ffdd57;
-      text-decoration: none;
-    }
-
-    .footer_section a:hover {
-      text-decoration: underline;
-    }
-  </style>
 </head>
 
 <body class="sub_page">
@@ -236,31 +130,31 @@
           <div class="row">
             <div class="col-md-6">
               <h4 class="text-secondary">Eligibility:</h4>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Injured as a result of a violent crime, or family members of deceased victims.</li>
-                <li class="list-group-item">Injuries can be physical or psychological.</li>
-                <li class="list-group-item">Crime must have occurred in Ontario.</li>
-                <li class="list-group-item">Police report must have been made (charges and convictions not necessary).</li>
-                <li class="list-group-item">Must apply within two years of the incident date (extensions possible).</li>
+              <ul>
+                <li>Injured as a result of a violent crime, or family members of deceased victims.</li>
+                <li>Injuries can be physical or psychological.</li>
+                <li>Crime must have occurred in Ontario.</li>
+                <li>Police report must have been made (charges and convictions not necessary).</li>
+                <li>Must apply within two years of the incident date (extensions possible).</li>
               </ul>
             </div>
             <div class="col-md-6">
               <h4 class="text-secondary">Documents Needed:</h4>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Application Form</li>
-                <li class="list-group-item">Police Report</li>
-                <li class="list-group-item">Medical Records</li>
-                <li class="list-group-item">Proof of Expenses</li>
-                <li class="list-group-item">Proof of Relationship</li>
+              <ul>
+                <li>Application Form</li>
+                <li>Police Report</li>
+                <li>Medical Records</li>
+                <li>Proof of Expenses</li>
+                <li>Proof of Relationship</li>
               </ul>
             </div>
           </div>
           <div class="mt-4">
             <h4 class="text-secondary">Application Process:</h4>
             <ol class="list-group list-group-numbered">
-              <li class="list-group-item">Contact CICB: 416-326-2900 or 1-800-372-7463, info.cicb@ontario.ca</li>
-              <li class="list-group-item">Complete and Submit Application</li>
-              <li class="list-group-item">Review and Decision</li>
+              <li>Contact CICB: 416-326-2900 or 1-800-372-7463, info.cicb@ontario.ca</li>
+              <li>Complete and Submit Application</li>
+              <li>Review and Decision</li>
             </ol>
           </div>
           <div class="mt-4">
@@ -291,29 +185,29 @@
           <div class="row">
             <div class="col-md-6">
               <h4 class="text-secondary">Eligibility:</h4>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Homicide occurred on or after January 1, 2016.</li>
-                <li class="list-group-item">Applicant was the victim’s parent or spouse at the time of death.</li>
-                <li class="list-group-item">Homicide occurred in Ontario, and applicant resides in Ontario.</li>
+              <ul>
+                <li>Homicide occurred on or after January 1, 2016.</li>
+                <li>Applicant was the victim’s parent or spouse at the time of death.</li>
+                <li>Homicide occurred in Ontario, and applicant resides in Ontario.</li>
               </ul>
             </div>
             <div class="col-md-6">
               <h4 class="text-secondary">Documents Needed:</h4>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Application Form</li>
-                <li class="list-group-item">Death Certificate</li>
-                <li class="list-group-item">Proof of Relationship</li>
-                <li class="list-group-item">Proof of Residency</li>
-                <li class="list-group-item">Police Report</li>
+              <ul>
+                <li>Application Form</li>
+                <li>Death Certificate</li>
+                <li>Proof of Relationship</li>
+                <li>Proof of Residency</li>
+                <li>Police Report</li>
               </ul>
             </div>
           </div>
           <div class="mt-4">
             <h4 class="text-secondary">Application Process:</h4>
             <ol class="list-group list-group-numbered">
-              <li class="list-group-item">Contact FAFHV: 1-855-467-4344 or 416-212-9164</li>
-              <li class="list-group-item">Complete and Submit Application</li>
-              <li class="list-group-item">Review and Decision within 90 days</li>
+              <li>Contact FAFHV: 1-855-467-4344 or 416-212-9164</li>
+              <li>Complete and Submit Application</li>
+              <li>Review and Decision within 90 days</li>
             </ol>
           </div>
           <div class="mt-4">
@@ -344,29 +238,29 @@
           <div class="row">
             <div class="col-md-6">
               <h4 class="text-secondary">Eligibility:</h4>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Victim of violent crime (homicide, attempted murder, serious assault, etc.).</li>
-                <li class="list-group-item">Applications for emergency expenses must be within 45 days, counseling within 90 days.</li>
-                <li class="list-group-item">Crime occurred in Ontario, funds used in Ontario.</li>
+              <ul>
+                <li>Victim of violent crime (homicide, attempted murder, serious assault, etc.).</li>
+                <li>Applications for emergency expenses must be within 45 days, counseling within 90 days.</li>
+                <li>Crime occurred in Ontario, funds used in Ontario.</li>
               </ul>
             </div>
             <div class="col-md-6">
               <h4 class="text-secondary">Documents Needed:</h4>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Application Form</li>
-                <li class="list-group-item">Police Report</li>
-                <li class="list-group-item">Proof of Expenses</li>
-                <li class="list-group-item">Proof of No Other Financial Resources</li>
+              <ul>
+                <li>Application Form</li>
+                <li>Police Report</li>
+                <li>Proof of Expenses</li>
+                <li>Proof of No Other Financial Resources</li>
               </ul>
             </div>
           </div>
           <div class="mt-4">
             <h4 class="text-secondary">Application Process:</h4>
             <ol class="list-group list-group-numbered">
-              <li class="list-group-item">Contact VQRP: 1-888-579-2888</li>
-              <li class="list-group-item">Referral through police or victim support agency</li>
-              <li class="list-group-item">Work with a caseworker to complete and submit the application</li>
-              <li class="list-group-item">Review and Decision</li>
+              <li>Contact VQRP: 1-888-579-2888</li>
+              <li>Referral through police or victim support agency</li>
+              <li>Work with a caseworker to complete and submit the application</li>
+              <li>Review and Decision</li>
             </ol>
           </div>
           <div class="mt-4">
@@ -397,7 +291,157 @@
       <p class="lead">For more information, visit <a href="https://www.ontario.ca/" target="_blank" class="btn btn-outline-primary">Ontario.ca</a> or contact local victim support services.</p>
     </div>
   </div>
+  <div class="heading_container heading_center">
+        <h2>
+          <span>Victim Compensation Programs</span>
+        </h2>
+      </div>
+  
+  <section class="about_section">
+    <div class="container  ">
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="img-box">
+            <img src="images/about-img.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                 <span>Criminal Injuries Compensation Board (CICB)</span>
+              </h2>
+            </div>
+            <ul>
+                <li>Injured as a result of a violent crime, or family members of deceased victims.</li>
+                <li>Injuries can be physical or psychological.</li>
+                <li>Crime must have occurred in Ontario.</li>
+                <li>Police report must have been made (charges and convictions not necessary).</li>
+                <li>Must apply within two years of the incident date (extensions possible).</li>
+              </ul>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoModal" data-product="Financial Assistance">
+            Read More
+          </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="about_section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="detail-box">
+          <div class="heading_container">
+            <h2>
+              <span>Financial Assistance for Families of Homicide Victims (FAFHV) Program</span>
+            </h2>
+          </div>
+          <ul>
+            <li>Homicide occurred on or after January 1, 2016.</li>
+            <li>Applicant was the victim's parent or spouse at the time of death.</li>
+            <li>Homicide occurred in Ontario, and applicant resides in Ontario.</li>
+          </ul>
+          <!-- Button to trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoModal" data-product="Financial Assistance">
+            Read More
+          </button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-product="Financial Assistance">
+            View Example
+          </button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="img-box">
+          <img src="images/about-img.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+
+  <section class="about_section">
+    <div class="container  ">
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="img-box">
+            <img src="images/about-img.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+              <span>Victim Quick Response Program (VQRP)</span>
+              </h2>
+            </div>
+            <ul>
+                <li>Victim of violent crime (homicide, attempted murder, serious assault, etc.).</li>
+                <li>Applications for emergency expenses must be within 45 days, counseling within 90 days.</li>
+                <li>Crime occurred in Ontario, funds used in Ontario.</li>
+              </ul>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoModal" data-product="Financial Assistance">
+            Read More
+          </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="about_section">
+    <div class="container  ">
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="img-box">
+            <img src="images/about-img.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                About <span>Hospital</span>
+              </h2>
+            </div>
+            <p>
+              has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors
+            </p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoModal" data-product="Financial Assistance">
+            Read More
+          </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="about_section">
+    <div class="container  ">
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="img-box">
+            <img src="images/about-img.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                About <span>Hospital</span>
+              </h2>
+            </div>
+            <p>
+              has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors
+            </p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoModal" data-product="Financial Assistance">
+            Read More
+          </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- end about section -->
 
@@ -556,6 +600,55 @@
   </footer>
   <!-- footer section -->
 
+<!-- Modal -->
+<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="infoModalLabel">Program Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Dynamic content will be inserted here -->
+        <h4>Eligibility</h4>
+        <div id="modelEligibility"></div>
+        <h4>Documents Needed</h4>
+        <div id="modelDocument"></div>
+        <h4>Application Process</h4>
+        <div id="modelApplicationProcess"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Example Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Application Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Dynamic content will be inserted here -->
+        <div id="modelApplicantInfo"></div>
+        <div id="modelIncidentInfo"></div>
+        <div id="modelInjuryInfo"></div>
+        <div id="modelExpenses"></div>
+        <div id="modelDocuments"></div>
+        <div id="modelDeclaration"></div>
+        <div id="modelSubmission"></div>
+        <div id="modelFollowUp"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   <!-- jQery -->
   <script src="js/jquery-3.4.1.min.js"></script>
   <!-- bootstrap js -->
@@ -573,3 +666,165 @@
 </body>
 
 </html>
+
+<!-- JavaScript -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+  var infoModal = document.getElementById('infoModal');
+
+  infoModal.addEventListener('show.bs.modal', function (event) {
+    var button = event.relatedTarget; // Button that triggered the modal
+    var product = button.getAttribute('data-product'); // Extract product name from data-product attribute
+
+    // Fetch product details (you can replace this with actual data fetching logic)
+    var productDetails = {
+      'Financial Assistance': {
+        title: "Financial Assistance for Families of Homicide Victims (FAFHV) Program",
+        eligibility: `<ul>
+          <li>Homicide occurred on or after January 1, 2016.</li>
+          <li>Applicant was the victim's parent or spouse at the time of death.</li>
+          <li>Homicide occurred in Ontario, and applicant resides in Ontario.</li>
+        </ul>`,
+        document: `<ul>
+          <li>Application Form</li>
+          <li>Death Certificate</li>
+          <li>Proof of Relationship</li>
+          <li>Proof of Residency</li>
+          <li>Police Report</li>
+        </ul>`,
+        application: `<ol>
+          <li>Contact FAFHV: 1-855-467-4344 or 416-212-9164</li>
+          <li>Complete and Submit Application</li>
+          <li>Review and Decision within 90 days</li>
+        </ol>`
+      },
+    };
+
+    // Populate the modal with product details
+    var modalTitle = infoModal.querySelector('.modal-title');
+    var modalEligibility = infoModal.querySelector('#modelEligibility');
+    var modalDocument = infoModal.querySelector('#modelDocument');
+    var modalApplication = infoModal.querySelector('#modelApplicationProcess');
+
+    modalTitle.textContent = productDetails[product].title;
+    modalEligibility.innerHTML = productDetails[product].eligibility;
+    modalDocument.innerHTML = productDetails[product].document;
+    modalApplication.innerHTML = productDetails[product].application;
+  });
+});
+</script>
+
+
+<!-- JavaScript example model-->
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  var exampleModal = document.getElementById('exampleModal');
+
+  exampleModal.addEventListener('show.bs.modal', function (event) {
+    var button = event.relatedTarget; // Button that triggered the modal
+    var product = button.getAttribute('data-product'); // Extract product name from data-product attribute
+
+    // Fetch application details (you can replace this with actual data fetching logic)
+    var applicationDetails = {
+      'Financial Assistance': {
+        applicantInfo: `
+          <h4>Part 1: Applicant Information</h4>
+          <ul>
+            <li><strong>Name:</strong> Jane Doe</li>
+            <li><strong>Address:</strong> 123 Main Street, Toronto, ON, M1A 2B3</li>
+            <li><strong>Phone Number:</strong> (416) 555-1234</li>
+            <li><strong>Email Address:</strong> jane.doe@example.com</li>
+            <li><strong>Date of Birth:</strong> January 1, 1980</li>
+          </ul>
+        `,
+        incidentInfo: `
+          <h4>Part 2: Incident Information</h4>
+          <ul>
+            <li><strong>Date of Incident:</strong> March 15, 2023</li>
+            <li><strong>Location of Incident:</strong> 456 Elm Street, Toronto, ON</li>
+            <li><strong>Police Report Number:</strong> 2023-123456</li>
+            <li><strong>Description of Incident:</strong> Jane was assaulted by an unknown assailant while walking home. She sustained physical injuries and required medical treatment.</li>
+          </ul>
+        `,
+        injuryInfo: `
+          <h4>Part 3: Injury Information</h4>
+          <ul>
+            <li><strong>Type of Injury:</strong> Physical injuries (bruises, cuts) and psychological trauma (anxiety, PTSD)</li>
+            <li><strong>Medical Treatment Received:</strong> Emergency room visit, follow-up appointments with a physician, and counseling sessions.</li>
+          </ul>
+        `,
+        expenses: `
+          <h4>Part 4: Expenses Incurred</h4>
+          <ul>
+            <li><strong>Medical Expenses:</strong> $1,500 (emergency room visit, follow-up appointments)</li>
+            <li><strong>Counseling Expenses:</strong> $800 (10 sessions at $80 each)</li>
+            <li><strong>Other Expenses:</strong> $200 (transportation to medical appointments)</li>
+          </ul>
+        `,
+        documents: `
+          <h4>Part 5: Supporting Documents</h4>
+          <ul>
+            <li><strong>Police Report:</strong> Attached</li>
+            <li><strong>Medical Records:</strong> Attached</li>
+            <li><strong>Receipts for Expenses:</strong> Attached</li>
+          </ul>
+        `,
+        declaration: `
+          <h4>Part 6: Declaration and Signature</h4>
+          <ul>
+            <li><strong>Declaration:</strong> I declare that the information provided in this application is true and accurate to the best of my knowledge.</li>
+            <li><strong>Signature:</strong> Jane Doe</li>
+            <li><strong>Date:</strong> April 1, 2023</li>
+          </ul>
+        `,
+        submission: `
+          <h4>Submitting the Application</h4>
+          <ol>
+            <li><strong>Gather Documents:</strong> Ensure all supporting documents (police report, medical records, receipts) are attached.</li>
+            <li><strong>Submit Application:</strong> Send the completed application form and supporting documents to the CICB office:
+              <ul>
+                <li><strong>Mail:</strong> Criminal Injuries Compensation Board, 15 Grosvenor Street, Ground Floor, Toronto, ON M7A 2G6</li>
+                <li><strong>Email:</strong> info.cicb@ontario.ca</li>
+              </ul>
+            </li>
+          </ol>
+        `,
+        followUp: `
+          <h4>Follow-Up</h4>
+          <ul>
+            <li><strong>Contact Information:</strong> For any questions or to check the status of the application, contact the CICB at 416-326-2900 or toll-free at 1-800-372-7463.</li>
+          </ul>
+        `,
+      },
+    };
+
+    // Populate the modal with application details
+    var modalApplicantInfo = exampleModal.querySelector('#modelApplicantInfo');
+    var modalIncidentInfo = exampleModal.querySelector('#modelIncidentInfo');
+    var modalInjuryInfo = exampleModal.querySelector('#modelInjuryInfo');
+    var modalExpenses = exampleModal.querySelector('#modelExpenses');
+    var modalDocuments = exampleModal.querySelector('#modelDocuments');
+    var modalDeclaration = exampleModal.querySelector('#modelDeclaration');
+    var modalSubmission = exampleModal.querySelector('#modelSubmission');
+    var modalFollowUp = exampleModal.querySelector('#modelFollowUp');
+
+    modalApplicantInfo.innerHTML = applicationDetails[product].applicantInfo;
+    modalIncidentInfo.innerHTML = applicationDetails[product].incidentInfo;
+    modalInjuryInfo.innerHTML = applicationDetails[product].injuryInfo;
+    modalExpenses.innerHTML = applicationDetails[product].expenses;
+    modalDocuments.innerHTML = applicationDetails[product].documents;
+    modalDeclaration.innerHTML = applicationDetails[product].declaration;
+    modalSubmission.innerHTML = applicationDetails[product].submission;
+    modalFollowUp.innerHTML = applicationDetails[product].followUp;
+  });
+});
+</script>
+<!-- Bootstrap 5 CSS -->
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
+
+<!-- Bootstrap 5 JS (with Popper.js) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
