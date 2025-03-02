@@ -60,39 +60,15 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>User ID</th>
+                                            <th>Title</th>
+                                            <th>Description</th>
+                                            <th>Created At</th>
+                                            <th>Updated At</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                        <tr>
-                                            <td>Michael Bruce</td>
-                                            <td>Javascript Developer</td>
-                                            <td>Singapore</td>
-                                            <td>29</td>
-                                            <td>2011/06/27</td>
-                                            <td>$183,000</td>
-                                            <td>
-                                                <button class="btn btn-warning btn-sm" onclick="editUser(this)">Edit</button>
-                                                <button class="btn btn-danger btn-sm" onclick="deleteUser(this)">Delete</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Donna Snider</td>
-                                            <td>Customer Support</td>
-                                            <td>New York</td>
-                                            <td>27</td>
-                                            <td>2011/01/25</td>
-                                            <td>$112,000</td>
-                                            <td>
-                                                <button class="btn btn-warning btn-sm" onclick="editUser(this)">Edit</button>
-                                                <button class="btn btn-danger btn-sm" onclick="deleteUser(this)">Delete</button>
-                                            </td>
-                                        </tr>
+                                    <tbody id="lawyerTableBody">  
                                     </tbody>
                                 </table>
                             </div>
@@ -184,6 +160,52 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+
+    <script>
+        // Fetch data from an external API
+        fetch('http://localhost:5430/v1/user/community/getAllThread?page=1&limit=10', {
+            method: 'GET', // or 'POST', 'PUT', etc.
+            headers: {
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjoiVTJGc2RHVmtYMThPakNQeDRpTDJGY281OTMza2pkenJHK0g2U04vWXdtSlNjaHQyb2xNQjREYWpwUitMZVBpVCIsInBhc3N3b3JkIjoiVTJGc2RHVmtYMTlPdWxSWSszbU4yRVpXVXhlZW1uYjNaS010Unkwc2QvUTRIUkVsQjltdnFwZXNZcmtJTEcvUFpCMll3RXMwSlJSd2ZQWWxNMjhMby92YzZvU0MvU0crSDQvZ2tqS1FqOEE9IiwiaWF0IjoxNzQwODgwMjMwLCJleHAiOjE3NDA5NjY2MzB9.oCJK9RVzDRalHzgrKwrrGOYv1RPHH3ZJM4CeJUTX3BA', // Add headers if needed
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.json()) // Parse JSON response
+            .then(data => {
+                console.log(data); // Handle the data
+                // Get the table body
+                const tableBody = document.getElementById('lawyerTableBody');
+
+                // Clear existing rows (if any)
+                tableBody.innerHTML = '';
+
+                // Loop through the data and create table rows
+                data.result.forEach(lawyer => {
+                    const row = document.createElement('tr');
+
+                    // Add data to the row
+                    row.innerHTML = `
+        <td>${lawyer.UserId}</td>
+        <td>${lawyer.title}</td>
+        <td>${lawyer.description}</td>
+        <td>${lawyer.createdAt}</td>
+        <td>${lawyer.updatedAt}</td>
+        <td>
+            <button class="btn btn-warning btn-sm" onclick="editUser(this)">Edit</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteUser(this)">Delete</button>
+        </td>
+    `;
+
+                    // Append the row to the table body
+                    tableBody.appendChild(row);
+                });
+
+                // Populate your table or perform other actions
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    </script>
 
 </body>
 
