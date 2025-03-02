@@ -1,3 +1,12 @@
+<script>
+  // $token = $sessionStorage.getItem('token');
+  // console.log($token)
+  if (!sessionStorage.getItem('userId')) {
+    window.location.href = './login.php';
+  } else {
+  // console.log('token exists:',sessionStorage.getItem('userId'));
+}
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
