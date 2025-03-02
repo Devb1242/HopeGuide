@@ -24,9 +24,6 @@
     <li class="nav-item">
         <a class="nav-link" href="psychologist_management.php"><i class="fas fa-user-md"></i><span>Psychologist Management</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="appointment_overview.php"><i class="fas fa-calendar-check"></i><span>Appointment Overview</span></a>
-    </li>
     <hr class="sidebar-divider">
 </ul>
 <!-- End of Sidebar -->
