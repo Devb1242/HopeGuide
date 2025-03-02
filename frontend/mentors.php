@@ -153,7 +153,7 @@
                         <p class="card-text">${mentore.mobile}</p>
                         <div class="d-flex justify-content-between">
                             <button class="btn btn-primary btn-custom"><a href="bookAppoinment.php" style="color: white;">Book</a></button>
-                            <button class="btn btn-success btn-custom">Chat</button>
+                            <button class="btn btn-success btn-custom"><a href="chatPage.php?mentoreId=${mentore._id}&mentoreName=${mentore.fullName}" style="color: white;"/>Chat</button>
                         </div>
                     </div>
                 </div>
