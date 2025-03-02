@@ -1113,7 +1113,7 @@ a:focus {
   margin-right: 10px;
 }
 
-/* footer section*/
+/* footer section
 .footer_section {
   position: relative;
   background-color: #252525;
@@ -1128,5 +1128,125 @@ a:focus {
 
 .footer_section p a {
   color: inherit;
+}*/
+
+/* Footer Styles */
+.footer_section {
+  background-color: #2c3e50;
+  color: #ffffff;
+  padding: 20px 0; /* Reduced padding */
 }
+
+.footer_content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px; /* Reduced margin */
+}
+
+.footer_logo img {
+  width: 120px; /* Reduced logo size */
+  margin-bottom: 10px; /* Reduced margin */
+}
+
+.footer_logo p {
+  font-size: 12px; /* Reduced font size */
+  line-height: 1.5;
+  max-width: 250px; /* Reduced width */
+}
+
+.footer_row {
+  display: flex;
+  gap: 30px; /* Reduced gap */
+}
+
+.footer_links,
+.footer_contact {
+  flex: 1;
+}
+
+.footer_links h5,
+.footer_contact h5,
+.footer_newsletter h5 {
+  font-size: 16px; /* Reduced font size */
+  margin-bottom: 10px; /* Reduced margin */
+}
+
+.footer_links ul,
+.footer_contact ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer_links ul li,
+.footer_contact ul li {
+  margin-bottom: 8px; /* Reduced margin */
+}
+
+.footer_links ul li a,
+.footer_contact ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 12px; /* Reduced font size */
+}
+
+.footer_links ul li a:hover,
+.footer_contact ul li a:hover {
+  color: #1abc9c;
+}
+
+.footer_contact ul li i {
+  margin-right: 8px; /* Reduced margin */
+  color: #1abc9c;
+}
+
+.footer_newsletter form {
+  display: flex;
+  gap: 8px; /* Reduced gap */
+}
+
+.footer_newsletter input[type="email"] {
+  padding: 8px; /* Reduced padding */
+  border: none;
+  border-radius: 5px;
+  width: 180px; /* Reduced width */
+}
+
+.footer_newsletter button {
+  padding: 8px 16px; /* Reduced padding */
+  background-color: #1abc9c;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.footer_newsletter button:hover {
+  background-color: #16a085;
+}
+
+.footer_social {
+  text-align: center;
+  margin: 15px 0; /* Reduced margin */
+}
+
+.footer_social a {
+  color: #ffffff;
+  font-size: 18px; /* Reduced font size */
+  margin: 0 8px; /* Reduced margin */
+  transition: color 0.3s;
+}
+
+.footer_social a:hover {
+  color: #1abc9c;
+}
+
+.footer_copyright {
+  text-align: center;
+  font-size: 12px; /* Reduced font size */
+  border-top: 1px solid #34495e;
+  padding-top: 15px; /* Reduced padding */
+}
+
 /*# sourceMappingURL=style.css.map */
