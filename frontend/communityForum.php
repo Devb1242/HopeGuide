@@ -204,61 +204,6 @@
 
     <!-- Existing Threads -->
     <div id="threads-container">
-        <!-- Thread 1 -->
-        <div class="thread">
-            <div class="thread-header">
-                <div>
-                    <span class="thread-title">How to use Bootstrap?</span>
-                    <span class="thread-username">by JohnDoe</span>
-                </div>
-            </div>
-            <div class="thread-description">
-                I'm new to Bootstrap and would like to know how to get started with it. Any tips or resources would be appreciated!
-            </div>
-            <div class="d-flex justify-content-between align-items-center mt-3">
-                <button class="btn btn-primary btn-sm" onclick="toggleReply('reply1')">Reply</button>
-                <button class="btn btn-outline-secondary btn-sm" onclick="toggleReplies('replies1')">Show Replies</button>
-            </div>
-            <div id="reply1" class="reply-section">
-                <textarea rows="3" placeholder="Write your reply..." maxlength="200" oninput="updateCharCount(this, 'charCount1')"></textarea>
-                <div class="char-count" id="charCount1">200 characters remaining</div>
-                <button class="btn btn-success btn-sm" onclick="submitReply('reply1', 'replies1')">Submit Reply</button>
-                <div class="spinner-border text-primary spinner" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
-            <div id="replies1" class="replies">
-                <!-- Replies will be dynamically added here -->
-            </div>
-        </div>
-
-        <!-- Thread 2 -->
-        <div class="thread">
-            <div class="thread-header">
-                <div>
-                    <span class="thread-title">Best practices for responsive design</span>
-                    <span class="thread-username">by JaneSmith</span>
-                </div>
-            </div>
-            <div class="thread-description">
-                What are some of the best practices for creating responsive designs that work well on all devices?
-            </div>
-            <div class="d-flex justify-content-between align-items-center mt-3">
-                <button class="btn btn-primary btn-sm" onclick="toggleReply('reply2')">Reply</button>
-                <button class="btn btn-outline-secondary btn-sm" onclick="toggleReplies('replies2')">Show Replies</button>
-            </div>
-            <div id="reply2" class="reply-section">
-                <textarea rows="3" placeholder="Write your reply..." maxlength="200" oninput="updateCharCount(this, 'charCount2')"></textarea>
-                <div class="char-count" id="charCount2">200 characters remaining</div>
-                <button class="btn btn-success btn-sm" onclick="submitReply('reply2', 'replies2')">Submit Reply</button>
-                <div class="spinner-border text-primary spinner" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
-            <div id="replies2" class="replies">
-                <!-- Replies will be dynamically added here -->
-            </div>
-        </div>
     </div>
 </div>
 
@@ -400,6 +345,119 @@
 <!-- Bootstrap JS and dependencies -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Fetch threads from API
+    fetch('http://localhost:5430/v1/user/community/getAllThread?page=1&limit=10', {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJVMkZzZEdWa1gxL2Qrc1paN20zaUloajhFNnloV2ZSOUlydzd2UGJCbmJTUlVEc1R5dGIySmRqSEJOb3N2S2dsIiwicGFzc3dvcmQiOiJVMkZzZEdWa1gxOWFrenNzOEJIc2lleWx3d0dMNEFUcWdMZkluK2ZGb0hidUtzaHVMYWpVU2pLZVBTS2pjMVFqcHZFMG81eG5rMm0xVmR1cTlDdHdnbWVQZ0hBRXhDSWsrRmZrRGNrd3F3Yz0iLCJpYXQiOjE3NDA4OTM2OTcsImV4cCI6MTc0MDk4MDA5N30.ecQyENiP-71NwEQdFQjdOh468SHwLE5SmpX69zLOlcY',
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        const threadsContainer = document.getElementById('threads-container');
+        threadsContainer.innerHTML = ''; // Clear existing content
+
+        // Assuming data.data contains array of threads
+        data.data.result.forEach((thread, index) => {
+            const threadHTML = `
+                <div class="thread">
+                    <div class="thread-header">
+                        <div>
+                            <span class="thread-title">${thread.title || 'No Title'}</span>
+                            <span class="thread-username">by ${thread.username || 'Anonymous'}</span>
+                        </div>
+                    </div>
+                    <div class="thread-description">
+                        ${thread.description || 'No description available'}
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <button class="btn btn-primary btn-sm" onclick="toggleReply('reply${index}')">Reply</button>
+                        <button class="btn btn-outline-secondary btn-sm" onclick="toggleReplies('replies${index}')">Show Replies</button>
+                    </div>
+                    <div id="reply${index}" class="reply-section" style="display: none;">
+                        <textarea rows="3" placeholder="Write your reply..." 
+                                  maxlength="200" 
+                                  oninput="updateCharCount(this, 'charCount${index}')"></textarea>
+                        <div class="char-count" id="charCount${index}">200 characters remaining</div>
+                        <button class="btn btn-success btn-sm" 
+                                onclick="submitReply('reply${index}', 'replies${index}')">
+                            Submit Reply
+                        </button>
+                        <div class="spinner-border text-primary spinner" role="status" style="display: none;">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                    <div id="replies${index}" class="replies" style="display: none;">
+                        ${(thread.replies || []).map(reply => `
+                            <div class="reply">
+                                <div class="reply-user">${reply.username}</div>
+                                <div class="reply-content">${reply.content}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            threadsContainer.insertAdjacentHTML('beforeend', threadHTML);
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching threads:', error);
+        threadsContainer.innerHTML = '<p class="text-danger">Error loading threads. Please try again later.</p>';
+    });
+
+    // Existing forum interaction functions
+    function toggleReply(replyId) {
+        const replySection = document.getElementById(replyId);
+        replySection.style.display = replySection.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function toggleReplies(repliesId) {
+        const repliesSection = document.getElementById(repliesId);
+        repliesSection.style.display = repliesSection.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function updateCharCount(textarea, charCountId) {
+        const remaining = 200 - textarea.value.length;
+        document.getElementById(charCountId).textContent = `${remaining} characters remaining`;
+    }
+
+    async function submitReply(replyId, repliesId) {
+        const textarea = document.querySelector(`#${replyId} textarea`);
+        const content = textarea.value.trim();
+        
+        if (!content) return;
+
+        try {
+            const spinner = document.querySelector(`#${replyId} .spinner`);
+            spinner.style.display = 'inline-block';
+
+            // Simulate API call - replace with actual API endpoint
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            // Add new reply to UI
+            const repliesContainer = document.getElementById(repliesId);
+            repliesContainer.insertAdjacentHTML('afterbegin', `
+                <div class="reply">
+                    <div class="reply-user">You</div>
+                    <div class="reply-content">${content}</div>
+                </div>
+            `);
+            
+            textarea.value = '';
+            updateCharCount(textarea, `charCount${replyId.replace('reply', '')}`);
+        } catch (error) {
+            console.error('Error submitting reply:', error);
+            alert('Failed to submit reply. Please try again.');
+        } finally {
+            document.querySelector(`#${replyId} .spinner`).style.display = 'none';
+        }
+    }
+});
+</script>
 
 </body>
 </html>
