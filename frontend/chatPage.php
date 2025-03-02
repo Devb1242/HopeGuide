@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat with Mentor</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
      <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 
@@ -25,7 +23,7 @@
 <link href="css/style.css" rel="stylesheet" />
 <!-- responsive style -->
 <link href="css/responsive.css" rel="stylesheet" />
-    <style>
+<style>
         :root {
             --primary-color: #6366f1;
             --secondary-color: #f8fafc;
@@ -276,8 +274,7 @@
     </header>
 
 
-    <!-- Chat Container -->
-
+<!-- Chat Container -->
 <div class="chat-container">
     <!-- Chat Header -->
     <div class="chat-header">
@@ -293,17 +290,7 @@
 
     <!-- Chat Messages -->
     <div class="chat-messages" id="chat-messages">
-        <!-- Mentor Message -->
-        <div class="message mentor">
-            <div class="message-text">Hi there! How can I help you today? 😊</div>
-            <span class="message-time">10:00 AM</span>
-        </div>
-
-        <!-- User Message -->
-        <div class="message user">
-            <div class="message-text">Hello! I need help with my project timeline.</div>
-            <span class="message-time">10:02 AM</span>
-        </div>
+        <!-- Messages will be dynamically added here -->
     </div>
 
     <!-- Typing Indicator -->
@@ -333,42 +320,107 @@
     </div>
 </div>
 
+<!-- Connection Status -->
+<div id="connection-status">
+    <span class="status-dot"></span>
+    <span class="status-text">Connecting...</span>
+</div>
+
 <script>
-    // Auto-expand textarea
-    const textarea = document.getElementById('message-input');
-    textarea.addEventListener('input', function() {
-        this.style.height = 'auto';
-        this.style.height = this.scrollHeight + 'px';
+    // WebSocket Connection
+    const socket = new WebSocket('ws://your-nodejs-server:8080');
+
+    // Connection opened
+    socket.addEventListener('open', (event) => {
+        console.log('Connected to WebSocket server');
+        showConnectionStatus('Connected');
     });
 
-    // Sample message sending
-    document.getElementById('send-button').addEventListener('click', function() {
-        const messageText = textarea.value.trim();
+    // Listen for messages
+    socket.addEventListener('message', (event) => {
+        const message = JSON.parse(event.data);
+        handleIncomingMessage(message);
+    });
+
+    // Handle errors
+    socket.addEventListener('error', (error) => {
+        console.error('WebSocket error:', error);
+        showConnectionStatus('Connection error');
+    });
+
+    // Handle connection close
+    socket.addEventListener('close', (event) => {
+        console.log('WebSocket connection closed');
+        showConnectionStatus('Disconnected');
+    });
+
+    // Send Message
+    document.getElementById('send-button').addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        const messageInput = document.getElementById('message-input');
+        const messageText = messageInput.value.trim();
+        
         if (messageText) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'message user';
-            messageDiv.innerHTML = `
-                <div class="message-text">${messageText}</div>
-                <span class="message-time">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-            `;
+            const messageData = {
+                type: 'chat-message',
+                content: messageText,
+                sender: 'user', // Replace with actual user ID
+                recipient: 'mentor-id', // Replace with actual mentor ID
+                timestamp: new Date().toISOString()
+            };
             
-            document.getElementById('chat-messages').appendChild(messageDiv);
-            textarea.value = '';
-            textarea.style.height = 'auto';
-            
-            // Scroll to bottom
-            const chatMessages = document.getElementById('chat-messages');
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+            socket.send(JSON.stringify(messageData));
+            messageInput.value = '';
+            messageInput.style.height = 'auto';
         }
     });
 
-    // Handle Enter key
-    textarea.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            document.getElementById('send-button').click();
-        }
+    // Handle Incoming Messages
+    function handleIncomingMessage(message) {
+        const chatMessages = document.getElementById('chat-messages');
+        
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${message.sender === 'user' ? 'user' : 'mentor'}`;
+        
+        messageDiv.innerHTML = `
+            <div class="message-text">${message.content}</div>
+            <div class="message-time">${new Date(message.timestamp).toLocaleTimeString()}</div>
+        `;
+        
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Typing Indicator
+    const messageInput = document.getElementById('message-input');
+    let typingTimeout;
+
+    messageInput.addEventListener('input', () => {
+        socket.send(JSON.stringify({
+            type: 'typing',
+            isTyping: true,
+            sender: 'user', // Replace with actual user ID
+            recipient: 'mentor-id' // Replace with actual mentor ID
+        }));
+        
+        clearTimeout(typingTimeout);
+        typingTimeout = setTimeout(() => {
+            socket.send(JSON.stringify({
+                type: 'typing',
+                isTyping: false,
+                sender: 'user', // Replace with actual user ID
+                recipient: 'mentor-id' // Replace with actual mentor ID
+            }));
+        }, 1000);
     });
+
+    // Connection Status
+    function showConnectionStatus(status) {
+        const statusElement = document.getElementById('connection-status');
+        statusElement.className = `connection-status status-${status.toLowerCase()}`;
+        statusElement.querySelector('.status-text').textContent = status;
+    }
 </script>
 
 <!-- Bootstrap JS -->
