@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dev Patel - Mentor Management</title>
+    <title>Dev Patel - Lawyer Management</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -22,6 +22,15 @@
 
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+        <!-- RateYo CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+
+    <!-- jQuery (required for RateYo) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- RateYo JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 
 </head>
 
@@ -49,46 +58,20 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Add New Mentor Form</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Add New Lawyer Form</h1>
                     </div>
                     
                     <div class="card shadow mb-4">
                         <div class="card-body">
                           <form id="addUserForm" name="addUserForm" class="row g-3 needs-validation" method="post" novalidate>
                             <div class="col-md-6">
-                              <label for="firstName" class="form-label">First Name</label>
-                              <input type="text" class="form-control" id="firstName" name="firstName" required>
+                              <label for="name" class="form-label">Name</label>
+                              <input type="text" class="form-control" id="name" name="name" required>
                               <div class="invalid-feedback">
                                 Please provide a valid name.
                               </div>
                             </div>
-
-                            <div class="col-md-6">
-                              <label for="lastName" class="form-label">Last Name</label>
-                              <input type="text" class="form-control" id="lastName" name="lastName" required>
-                              <div class="invalid-feedback">
-                                Please provide a valid name.
-                              </div>
-                            </div>
-
-                            <!-- Email -->
-                            <div class="col-md-6">
-                              <label for="email" class="form-label">E-mail</label>
-                              <input type="email" class="form-control" id="email" name="email" required>
-                              <div class="invalid-feedback">
-                                Please provide a valid email.
-                              </div>
-                            </div>
-
-                            <!-- Mobile Number -->
-                            <div class="col-md-6">
-                              <label for="password" class="form-label">Password</label>
-                              <input type="password" class="form-control" id="password" name="password" required>
-                              <div class="invalid-feedback">
-                                Please provide a valid mobile number.
-                              </div>
-                            </div>
-
+                            
                             <!-- Mobile Number -->
                             <div class="col-md-6">
                               <label for="mobile" class="form-label">Mobile No.</label>
@@ -97,6 +80,22 @@
                                 Please provide a valid mobile number.
                               </div>
                             </div>
+
+                            <div class="col-md-6">
+                              <label for="description" class="form-label">Description</label>
+                              <input type="textbox" class="form-control" id="description" name="description" required>
+                            </div>
+
+                            <div class="col-md-6">
+                              <label for="address" class="form-label">Address</label>
+                              <input type="textbox" class="form-control" id="address" name="address" required>
+                            </div>
+
+                            <div class="col-md-6">
+                              <label for="ratings" class="form-label">Ratings</label>
+                              <input type="number" class="form-control" id="ratings" name="ratings" required>
+                            </div>
+
                             <div class="col-12">
                                 <label class="form-check-label" for="invalidCheck">
                                 </label>
@@ -120,9 +119,6 @@
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
-
   <!-- Custom JavaScript for Form Submission -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -140,22 +136,22 @@
         }
 
         // Collect form data
-        let firstName = document.getElementById('firstName').value
-        let lastName = document.getElementById('lastName').value
-        let email = document.getElementById('email').value
-        let password = document.getElementById('password').value
+        let name = document.getElementById('name').value
         let mobile = document.getElementById('mobile').value
+        let description = document.getElementById('description').value
+        let address = document.getElementById('address').value
+        let ratings = document.getElementById('ratings').value
 
         const userData = {
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          password: password,
-          mobile: mobile
+          name: name,
+          mobile: mobile,
+          description: description,
+          address: address,
+          ratings: ratings
         };
         console.log(userData)
         // Send POST request to add new user
-        fetch('http://localhost:5430/v1/admin/mentoreManage/addMentore', { // Replace with your API endpoint
+        fetch('http://localhost:5430/v1/admin/loyear/addLoyear', { // Replace with your API endpoint
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -165,19 +161,19 @@
         })
           .then(response => {
             if (!response.ok) {
-              throw new Error('Failed to add Mentor');
+              throw new Error('Failed to add Lawyer');
             }
             return response.json();
           })
           .then(data => {
-            console.log('Mentor added:', data);
-            alert('Mentor added successfully!');
+            console.log('Lawyer added:', data);
+            alert('Lawyer added successfully!');
             addUserForm.reset(); // Clear the form
             addUserForm.classList.remove('was-validated'); // Reset validation
           })
           .catch(error => {
-            console.error('Error adding Mentor:', error);
-            alert('Failed to add Mentor. Please try again.');
+            console.error('Error adding Lawyer:', error);
+            alert('Failed to add Lawyer. Please try again.');
           });
       });
     });
